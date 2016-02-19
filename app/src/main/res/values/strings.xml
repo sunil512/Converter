@@ -1,0 +1,172 @@
+<resources>
+    <string name="app_name">Converter</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="temp">Temperature</string>
+    <string name="from">FROM</string>
+    <string name="to">TO</string>
+
+    <string-array name="temperatureform">
+        <item name="c">Celsius</item>
+        <item name="f">Fahrenheit</item>
+        <item name="k">Kelvin</item>
+        <item name="r">Rankine</item>
+        <item name="n">Newton</item>
+        <item name="re">Reaumur</item>
+        <item name="ro">Romer</item>
+        <item name="de">Delisle</item>
+    </string-array>
+
+    <string-array name="weightform">
+        <item name="kg">Kilograms</item>
+        <item name="g">Grams</item>
+        <item name="lb">Pounds</item>
+        <item name="oz">Ounces</item>
+        <item name="st">Stones</item>
+        <item name="ct">Carats</item>
+        <item name="mg">Milligrams</item>
+        <item name="µg">Micrograms</item>
+    </string-array>
+
+    <string-array name="areaform">
+        <item name="kph">Hectares</item>
+        <item name="mph">SquareMeters</item>
+        <item name="ms">Acres</item>
+        <item name="knots">SquareFeet</item>
+        <item name="mach">SquareKilometers</item>
+        <item name="yd">SquareMiles</item>
+        <item name="ft">SquareYards</item>
+    </string-array>
+
+    <string-array name="lengthform">
+        <item name="mph">Kilometers</item>
+        <item name="ms">Miles</item>
+        <item name="kph">Meters</item>
+        <item name="knots">Centimeters</item>
+        <item name="mach">Millimeters</item>
+        <item name="yd">feet</item>
+        <item name="ft">Inches</item>
+        <item name="m">yards</item>
+    </string-array>
+
+    <string-array name="timeform">
+        <item name="s">Seconds</item>
+        <item name="min">Minutes</item>
+        <item name="hr">Hour</item>
+        <item name="day">Day</item>
+    </string-array>
+
+    <string-array name="volumeform">
+        <item name="l">Liters</item>
+        <item name="cl">Centiliters</item>
+        <item name="ml">Milliliters</item>
+        <item name="m3">CubicMeters</item>
+        <item name="yd">CubicYards</item>
+        <item name="cft">CubicFeet</item>
+        <item name="cin">CubicInches</item>
+        <item name="ccm">CubicCentimeters</item>
+        <item name="cmm">CubicMillimeters</item>
+        <item name="kl">Kiloliters</item>
+        <item name="bbl">Barrels</item>
+        <item name="tblsp">Tablespoons</item>
+        <item name="tsp">Teaspoons</item>
+        <item name="qt">Quarts</item>
+    </string-array>
+
+    <string-array name="storageform">
+        <item name="bi">bit</item>
+        <item name="by">byte</item>
+        <item name="kb">kilobyte</item>
+        <item name="mb">megabyte</item>
+        <item name="gb">gigabyte</item>
+        <item name="tb">terabyte</item>
+        <item name="pb">petabyte</item>
+    </string-array>
+
+    <string-array name="pressureform">
+        <item name="atm">atmosphere</item>
+        <item name="b">bar</item>
+        <item name="hPa">hectopascal</item>
+        <item name="kgcm">kgpersquarecm</item>
+        <item name="kgf">kgpersquaremeter</item>
+        <item name="kPa">kilopascal</item>
+        <item name="milibar">millibar</item>
+        <item name="mmHg">millileterOfMercury</item>
+        <item name="Pa">pascal</item>
+        <item name="psf">PoundsperSquareFoot</item>
+        <item name="psi">PoundsperSquareInch</item>
+        <item name="tor">Torr</item>
+    </string-array>
+
+    <string-array name="soundform">
+        <item name="be">bel</item>
+        <item name="dbe">decibel</item>
+        <item name="np">neper</item>
+    </string-array>
+
+    <string-array name="energyform">
+        <item name="btu">BritishThermalUnit</item>
+        <item name="cal">calories</item>
+        <item name="eV">electronVolts</item>
+        <item name="er">erg</item>
+        <item name="ftlb">footPound</item>
+        <item name="gj">GigaJoule</item>
+        <item name="jo">Joule</item>
+        <item name="kcal">KiloCalories</item>
+        <item name="kj">KiloJoules</item>
+        <item name="kwh">KiloWattHour</item>
+        <item name="Calc">NutritionCalorie</item>
+        <item name="tn">tonOfTNT</item>
+        <item name="Wh">wattHour</item>
+    </string-array>
+
+    <string-array name="currentform">
+        <item name="A">ampere</item>
+        <item name="KA">Kiloampere</item>
+        <item name="mA">milliampere</item>
+        <item name="Bi">biot</item>
+        <item name="abA">abampere</item>
+        <item name="EMU">EMUCurrent</item>
+        <item name="stA">statampere</item>
+        <item name="ESU">ESUCurrent</item>
+        <item name="CGS">electromagneticCGSCurrent</item>
+        <item name="CGSes">electrostaticCGScurrent</item>
+    </string-array>
+
+    <string-array name="magnetform">
+        <item name="gcm">GaussSquareCentimeter</item>
+        <item name="kiloli">KiloLine</item>
+        <item name="lin">Line</item>
+        <item name="mx">Maxwell</item>
+        <item name="mxi">MaxwellInternational</item>
+        <item name="megal">MegaLine</item>
+        <item name="wb">MicroWeber</item>
+        <item name="mwb">MilliWeber</item>
+        <item name="tcm">TeslaSquareCentimeter</item>
+        <item name="tm">TeslaSquaremeter</item>
+        <item name="vs">voltsecond</item>
+        <item name="wbb">Weber</item>
+    </string-array>
+
+    <string-array name="imageform">
+        <item name="twi">twip</item>
+        <item name="met">meter</item>
+        <item name="cmmm">centimeter</item>
+        <item name="mmm">millimeter</item>
+        <item name="cX">characterX</item>
+        <item name="cY">characterY</item>
+        <item name="pX">pixelX</item>
+        <item name="pY">pixelY</item>
+        <item name="innn">inch</item>
+        <item name="picc">pica</item>
+        <item name="pt">point</item>
+        <item name="enn">en</item>
+    </string-array>
+    <string name="fedb">Feedback</string>
+    <string name="au">About US</string>
+    <string name="con">UNITconverter</string>
+    <string name="convert">CONVERT</string>
+</resources>

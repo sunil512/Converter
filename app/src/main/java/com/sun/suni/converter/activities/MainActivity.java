@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity
 
     GridView grid;
     String[] text = {"Temperature", "Weight", "Length", "Time", "Area", "Volume", "Storage", "Pressure", "Sound", "Energy", "Magnet", "Image"};
-    int[] imgId = {R.drawable.thermometer67, R.drawable.food27, R.drawable.leftarrow, R.drawable.vehicle92, R.drawable.pie37, R.drawable.beaker8, R.drawable.storage, R.drawable.bpc, R.drawable.audio, R.drawable.energy, R.drawable.magnet, R.drawable.images};
+    int[] imgId = {R.drawable.temperature, R.drawable.food, R.drawable.resize, R.drawable.circular, R.drawable.pie, R.drawable.chemistry, R.drawable.database, R.drawable.blood, R.drawable.sound, R.drawable.energy, R.drawable.magnet, R.drawable.images};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

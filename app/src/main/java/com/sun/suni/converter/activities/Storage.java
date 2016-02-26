@@ -2,9 +2,10 @@ package com.sun.suni.converter.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
@@ -16,7 +17,6 @@ public class Storage extends AppCompatActivity implements AdapterView.OnItemSele
 
     Spinner san,sam;
     EditText ra,ban;
-    Button ed;
     StorageConverter scon;
     String sfrom,sto;
 
@@ -26,7 +26,6 @@ public class Storage extends AppCompatActivity implements AdapterView.OnItemSele
         setContentView(R.layout.storage);
         ra = (EditText) findViewById(R.id.sted);
         ban = (EditText) findViewById(R.id.sted1);
-        ed =(Button) findViewById(R.id.button7);
         scon = new StorageConverter();
 
         san = (Spinner) findViewById(R.id.stspinner);
@@ -36,6 +35,36 @@ public class Storage extends AppCompatActivity implements AdapterView.OnItemSele
 
         assert getSupportActionBar() != null;
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        ra.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                if (!ra.getText().toString().equals(""))
+                {
+                    sfrom = (String) san.getSelectedItem();
+                    sto = (String) sam.getSelectedItem();
+                    Double sip = Double.valueOf(ra.getText().toString());
+                    StorageConverter.Store fromStore = StorageConverter.Store.fromString(sfrom);
+                    StorageConverter.Store toStore = StorageConverter.Store.fromString(sto);
+                    Double sop = scon.StorageCon(fromStore,toStore,sip);
+                    ban.setText(String.valueOf(sop));
+                }
+                else {
+                    ban.setText("");
+                }
+            }
+        });
     }
 
     @Override
@@ -46,22 +75,5 @@ public class Storage extends AppCompatActivity implements AdapterView.OnItemSele
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
-    }
-
-    public void stor(View view)
-    {
-        if (!ra.getText().toString().equals(""))
-        {
-            sfrom = (String) san.getSelectedItem();
-            sto = (String) sam.getSelectedItem();
-            Double sip = Double.valueOf(ra.getText().toString());
-            StorageConverter.Store fromStore = StorageConverter.Store.fromString(sfrom);
-            StorageConverter.Store toStore = StorageConverter.Store.fromString(sto);
-            Double sop = scon.StorageCon(fromStore,toStore,sip);
-            ban.setText(String.valueOf(sop));
-        }
-        else {
-            ban.setText("");
-        }
     }
 }

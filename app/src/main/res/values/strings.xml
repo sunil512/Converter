@@ -74,6 +74,7 @@
         <item name="tblsp">Tablespoons</item>
         <item name="tsp">Teaspoons</item>
         <item name="qt">Quarts</item>
+        <item name="onc">Ounces</item>
     </string-array>
 
     <string-array name="storageform">

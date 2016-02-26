@@ -2,9 +2,10 @@ package com.sun.suni.converter.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
@@ -16,7 +17,6 @@ public class Sound extends AppCompatActivity implements AdapterView.OnItemSelect
 
     Spinner ssa,ssb;
     EditText sed,sad;
-    Button sbu;
     String sufrom,suto;
     SoundConverter sucon;
 
@@ -26,7 +26,6 @@ public class Sound extends AppCompatActivity implements AdapterView.OnItemSelect
         setContentView(R.layout.sound);
         sed = (EditText) findViewById(R.id.sued);
         sad = (EditText) findViewById(R.id.sued1);
-        sbu =(Button) findViewById(R.id.button9);
         sucon = new SoundConverter();
 
         ssa = (Spinner) findViewById(R.id.suspinner);
@@ -36,6 +35,36 @@ public class Sound extends AppCompatActivity implements AdapterView.OnItemSelect
 
         assert getSupportActionBar() != null;
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        sed.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                if (!sed.getText().toString().equals(""))
+                {
+                    sufrom = (String) ssa.getSelectedItem();
+                    suto = (String) ssb.getSelectedItem();
+                    Double suip = Double.valueOf(sed.getText().toString());
+                    SoundConverter.Sund fromSund = SoundConverter.Sund.fromString(sufrom);
+                    SoundConverter.Sund toSund = SoundConverter.Sund.fromString(suto);
+                    Double suop = sucon.SoundConvert(fromSund,toSund,suip);
+                    sad.setText(String.valueOf(suop));
+                }
+                else {
+                    sad.setText("");
+                }
+            }
+        });
     }
 
     @Override
@@ -46,22 +75,5 @@ public class Sound extends AppCompatActivity implements AdapterView.OnItemSelect
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
-    }
-
-    public  void sunn(View view)
-    {
-        if (!sed.getText().toString().equals(""))
-        {
-            sufrom = (String) ssa.getSelectedItem();
-            suto = (String) ssb.getSelectedItem();
-            Double suip = Double.valueOf(sed.getText().toString());
-            SoundConverter.Sund fromSund = SoundConverter.Sund.fromString(sufrom);
-            SoundConverter.Sund toSund = SoundConverter.Sund.fromString(suto);
-            Double suop = sucon.SoundConvert(fromSund,toSund,suip);
-            sad.setText(String.valueOf(suop));
-        }
-        else {
-            sad.setText("");
-        }
     }
 }

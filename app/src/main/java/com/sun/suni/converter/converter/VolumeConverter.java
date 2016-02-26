@@ -18,7 +18,8 @@ public class VolumeConverter {
         BARRELS,
         TABLESPOONS,
         TEASPOONS,
-        QUARTS;
+        QUARTS,
+        OUNCES;
 
         public static Vol fromString(String text) {
             if (text != null) {
@@ -79,6 +80,9 @@ public class VolumeConverter {
                 }else if (to == Vol.QUARTS)
                 {
                     ret = ipt*1.0567;
+                }else if (to == Vol.OUNCES)
+                {
+                    ret = ipt*33.814;
                 }
                 break;
             case CENTILITERS:
@@ -121,6 +125,9 @@ public class VolumeConverter {
                 }else if (to == Vol.QUARTS)
                 {
                     ret = ipt*0.010567;
+                }else if (to == Vol.OUNCES)
+                {
+                    ret = ipt*0.33814;
                 }
                 break;
             case MILLILITERS:
@@ -163,6 +170,9 @@ public class VolumeConverter {
                 }else if (to == Vol.QUARTS)
                 {
                     ret = ipt*0.0010567;
+                }else if (to == Vol.OUNCES)
+                {
+                    ret = ipt*0.033814;
                 }
                 break;
             case CUBICMETERS:
@@ -205,6 +215,9 @@ public class VolumeConverter {
                 }else if (to == Vol.QUARTS)
                 {
                     ret = ipt*1056.7;
+                }else if (to == Vol.OUNCES)
+                {
+                    ret = ipt*33814;
                 }
                 break;
             case CUBICYARDS:
@@ -247,6 +260,9 @@ public class VolumeConverter {
                 }else if (to == Vol.QUARTS)
                 {
                     ret = ipt*807.90;
+                }else if (to == Vol.OUNCES)
+                {
+                    ret = ipt*25852.7;
                 }
                 break;
             case CUBICFEET:
@@ -289,6 +305,9 @@ public class VolumeConverter {
                 }else if (to == Vol.QUARTS)
                 {
                     ret = ipt*29.922;
+                }else if (to == Vol.OUNCES)
+                {
+                    ret = ipt*957.506;
                 }
                 break;
             case CUBICINCHES:
@@ -331,6 +350,9 @@ public class VolumeConverter {
                 }else if (to == Vol.QUARTS)
                 {
                     ret = ipt*0.017316;
+                }else if (to == Vol.OUNCES)
+                {
+                    ret = ipt*0.554113;
                 }
                 break;
             case CUBICCENTIMETERS:
@@ -373,6 +395,9 @@ public class VolumeConverter {
                 }else if (to == Vol.QUARTS)
                 {
                     ret = ipt*0.0010567;
+                }else if (to == Vol.OUNCES)
+                {
+                    ret = ipt*0.033814;
                 }
                 break;
             case CUBICMILLIMETERS:
@@ -415,6 +440,9 @@ public class VolumeConverter {
                 }else if (to == Vol.QUARTS)
                 {
                     ret = ipt*1.0566882e-06;
+                }else if (to == Vol.OUNCES)
+                {
+                    ret = ipt*3.3814023e-05;
                 }
                 break;
             case KILOLITERS:
@@ -457,6 +485,9 @@ public class VolumeConverter {
                 }else if (to == Vol.QUARTS)
                 {
                     ret = ipt*1056.7;
+                }else if (to == Vol.OUNCES)
+                {
+                    ret = ipt*33814;
                 }
                 break;
             case BARRELS:
@@ -499,6 +530,9 @@ public class VolumeConverter {
                 }else if (to == Vol.QUARTS)
                 {
                     ret = ipt*126.00;
+                }else if (to == Vol.OUNCES)
+                {
+                    ret = ipt*4032.0;
                 }
                 break;
             case TABLESPOONS:
@@ -541,6 +575,9 @@ public class VolumeConverter {
                 }else if (to == Vol.QUARTS)
                 {
                     ret = ipt*0.015625;
+                }else if (to == Vol.OUNCES)
+                {
+                    ret = ipt*0.5;
                 }
                 break;
             case TEASPOONS:
@@ -583,6 +620,9 @@ public class VolumeConverter {
                 }else if (to == Vol.QUARTS)
                 {
                     ret = ipt*0.0052083;
+                }else if (to == Vol.OUNCES)
+                {
+                    ret = ipt*0.166667;
                 }
                 break;
             case QUARTS:
@@ -625,6 +665,54 @@ public class VolumeConverter {
                 }else if (to == Vol.TEASPOONS)
                 {
                     ret = ipt*192.00;
+                }else if (to == Vol.OUNCES)
+                {
+                    ret = ipt*32;
+                }
+                break;
+            case OUNCES:
+                if (to == Vol.LITERS)
+                {
+                    ret = ipt/0.0295735;
+                }else if (to == Vol.CENTILITERS)
+                {
+                    ret = ipt/2.95735;
+                }else if (to == Vol.MILLILITERS)
+                {
+                    ret = ipt/29.5735;
+                }else if (to == Vol.CUBICMETERS)
+                {
+                    ret = ipt/2.95735e-5;
+                }else if (to == Vol.CUBICYARDS)
+                {
+                    ret = ipt*3.86807e-5;
+                }else if (to == Vol.CUBICFEET)
+                {
+                    ret = ipt*0.00104438;
+                }else if (to == Vol.CUBICINCHES)
+                {
+                    ret = ipt*1.80469;
+                }else if (to == Vol.CUBICCENTIMETERS)
+                {
+                    ret = ipt/29.5735;
+                }else if (to == Vol.CUBICMILLIMETERS)
+                {
+                    ret = ipt/29573.5;
+                }else if (to == Vol.KILOLITERS)
+                {
+                    ret = ipt/2.95735e-5;
+                }else if (to == Vol.BARRELS)
+                {
+                    ret = ipt*0.00024802;
+                }else if (to == Vol.TABLESPOONS)
+                {
+                    ret = ipt* 2;
+                }else if (to == Vol.TEASPOONS)
+                {
+                    ret = ipt*6;
+                }else if (to == Vol.QUARTS)
+                {
+                    ret = ipt*0.03125;
                 }
                 break;
         }

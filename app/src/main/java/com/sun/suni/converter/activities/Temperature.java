@@ -2,9 +2,10 @@ package com.sun.suni.converter.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
@@ -16,7 +17,6 @@ public class Temperature extends AppCompatActivity implements AdapterView.OnItem
 
     Spinner sp1,sp2;
     EditText input,result;
-    Button conv;
     String ufrom,uto;
     TemperatureConverter con;
 
@@ -28,7 +28,6 @@ public class Temperature extends AppCompatActivity implements AdapterView.OnItem
         input = (EditText) findViewById(R.id.ip);
         result = (EditText) findViewById(R.id.res);
         result.setClickable(false);
-        conv = (Button) findViewById(R.id.button);
         con = new TemperatureConverter();
 
         sp1 = (Spinner) findViewById(R.id.spinner);
@@ -38,6 +37,38 @@ public class Temperature extends AppCompatActivity implements AdapterView.OnItem
 
         assert getSupportActionBar() != null;
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        input.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                if (!input.getText().toString().equals("")){
+
+                    ufrom = (String) sp1.getSelectedItem();
+                    uto = (String) sp2.getSelectedItem();
+                    Double ip = Double.valueOf(input.getText().toString());
+                    TemperatureConverter.Units fromUnit = TemperatureConverter.Units.fromString(ufrom);
+                    TemperatureConverter.Units toUnit = TemperatureConverter.Units.fromString(uto);
+                    double r = con.TemperatureConvert(fromUnit,toUnit,ip);
+                    result.setText(String.valueOf(r));
+
+                }
+                else {
+                    result.setText("");
+                }
+
+            }
+        });
     }
 
 
@@ -51,24 +82,5 @@ public class Temperature extends AppCompatActivity implements AdapterView.OnItem
 
     }
 
-    public void convert(View view){
-
-
-        if (!input.getText().toString().equals("")){
-
-            ufrom = (String) sp1.getSelectedItem();
-            uto = (String) sp2.getSelectedItem();
-            Double ip = Double.valueOf(input.getText().toString());
-            TemperatureConverter.Units fromUnit = TemperatureConverter.Units.fromString(ufrom);
-            TemperatureConverter.Units toUnit = TemperatureConverter.Units.fromString(uto);
-            double r = con.TemperatureConvert(fromUnit,toUnit,ip);
-            result.setText(String.valueOf(r));
-
-        }
-        else {
-            result.setText("");
-        }
-
-    }
 }
 

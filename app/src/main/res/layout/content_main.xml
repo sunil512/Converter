@@ -18,6 +18,8 @@
         android:numColumns="auto_fit"
         android:gravity="center"
         android:columnWidth="100dp"
+        android:horizontalSpacing="5dp"
+        android:verticalSpacing="20dp"
         android:stretchMode="columnWidth"
         android:id="@+id/grid" />
 

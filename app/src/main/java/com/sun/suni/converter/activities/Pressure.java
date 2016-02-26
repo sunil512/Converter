@@ -2,9 +2,10 @@ package com.sun.suni.converter.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
@@ -16,7 +17,6 @@ public class Pressure extends AppCompatActivity implements AdapterView.OnItemSel
 
     Spinner psa,psb;
     EditText pe,pee;
-    Button pbu;
     String pfrom,pto;
     PressureConverter pcon;
 
@@ -26,7 +26,6 @@ public class Pressure extends AppCompatActivity implements AdapterView.OnItemSel
         setContentView(R.layout.pressure);
         pe = (EditText) findViewById(R.id.ped);
         pee = (EditText) findViewById(R.id.ped1);
-        pbu =(Button) findViewById(R.id.button8);
         pcon = new PressureConverter();
 
         psa = (Spinner) findViewById(R.id.pspinner);
@@ -36,6 +35,36 @@ public class Pressure extends AppCompatActivity implements AdapterView.OnItemSel
 
         assert getSupportActionBar() != null;
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        pe.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                if (!pe.getText().toString().equals(""))
+                {
+                    pfrom = (String) psa.getSelectedItem();
+                    pto = (String) psb.getSelectedItem();
+                    Double pip = Double.valueOf(pe.getText().toString());
+                    PressureConverter.Press fromPress = PressureConverter.Press.fromString(pfrom);
+                    PressureConverter.Press toPress = PressureConverter.Press.fromString(pto);
+                    Double pop = pcon.PressureConvert(fromPress,toPress,pip);
+                    pee.setText(String.valueOf(pop));
+                }
+                else {
+                    pee.setText("");
+                }
+            }
+        });
     }
 
     @Override
@@ -46,22 +75,5 @@ public class Pressure extends AppCompatActivity implements AdapterView.OnItemSel
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
-    }
-
-    public  void pres(View view)
-    {
-        if (!pe.getText().toString().equals(""))
-        {
-            pfrom = (String) psa.getSelectedItem();
-            pto = (String) psb.getSelectedItem();
-            Double pip = Double.valueOf(pe.getText().toString());
-            PressureConverter.Press fromPress = PressureConverter.Press.fromString(pfrom);
-            PressureConverter.Press toPress = PressureConverter.Press.fromString(pto);
-            Double pop = pcon.PressureConvert(fromPress,toPress,pip);
-            pee.setText(String.valueOf(pop));
-        }
-        else {
-            pee.setText("");
-        }
     }
 }

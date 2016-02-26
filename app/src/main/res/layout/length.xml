@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/bg"
     tools:context="com.sun.suni.converter.activities.Temperature">
 
 
@@ -34,7 +35,7 @@
     </LinearLayout>
 
     <Spinner
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:id="@+id/lsp1" />
@@ -62,19 +63,10 @@
     </LinearLayout>
 
     <Spinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/lsp2"
-        android:layout_marginTop="5dp"
-        android:layout_gravity="center_horizontal" />
-
-    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/convert"
-        android:onClick="length"
-        android:id="@+id/button3"
-        android:layout_gravity="center_horizontal" />
+        android:id="@+id/lsp2"
+        android:layout_marginTop="5dp" />
 
 
 </LinearLayout>

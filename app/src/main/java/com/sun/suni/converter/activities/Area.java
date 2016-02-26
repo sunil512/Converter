@@ -2,9 +2,10 @@ package com.sun.suni.converter.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
@@ -16,7 +17,6 @@ public class Area extends AppCompatActivity implements AdapterView.OnItemSelecte
 
     Spinner tspa,tspb;
     EditText aip,aop;
-    Button gud;
     String afrom,ato;
     AreaConverter aCon;
 
@@ -26,7 +26,6 @@ public class Area extends AppCompatActivity implements AdapterView.OnItemSelecte
         setContentView(R.layout.area);
         aip =(EditText) findViewById(R.id.ed1);
         aop = (EditText) findViewById(R.id.ed2);
-        gud =(Button) findViewById(R.id.button5);
         aCon = new AreaConverter();
 
         tspa = (Spinner) findViewById(R.id.asp1);
@@ -37,6 +36,38 @@ public class Area extends AppCompatActivity implements AdapterView.OnItemSelecte
 
         assert getSupportActionBar() != null;
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        aip.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                if (!aip.getText().toString().equals("")){
+
+                    afrom = (String) tspa.getSelectedItem();
+                    ato = (String) tspb.getSelectedItem();
+                    Double inp = Double.valueOf(aip.getText().toString());
+                    AreaConverter.Area fromArea = AreaConverter.Area.fromString(afrom);
+                    AreaConverter.Area toArea = AreaConverter.Area.fromString(ato);
+
+                    double resu = aCon.AreaConvert(fromArea,toArea,inp);
+                    aop.setText(String.valueOf(resu));
+                }
+                else {
+                    aop.setText("");
+                }
+
+            }
+        });
     }
 
     @Override
@@ -49,22 +80,4 @@ public class Area extends AppCompatActivity implements AdapterView.OnItemSelecte
 
     }
 
-    public  void area(View view)
-    {
-
-        if (!aip.getText().toString().equals("")){
-
-            afrom = (String) tspa.getSelectedItem();
-            ato = (String) tspb.getSelectedItem();
-            Double inp = Double.valueOf(aip.getText().toString());
-            AreaConverter.Area fromArea = AreaConverter.Area.fromString(afrom);
-            AreaConverter.Area toArea = AreaConverter.Area.fromString(ato);
-
-            double resu = aCon.AreaConvert(fromArea,toArea,inp);
-            aop.setText(String.valueOf(resu));
-        }
-        else {
-            aop.setText("");
-        }
-    }
 }

@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/bg"
     tools:context="com.sun.suni.converter.activities.Sound">
 
     <LinearLayout
@@ -31,7 +32,7 @@
     </LinearLayout>
 
     <Spinner
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/espinner"
         android:layout_marginTop="5dp"/>
@@ -62,15 +63,6 @@
         android:layout_height="wrap_content"
         android:id="@+id/espinner2"
         android:layout_marginTop="5dp"/>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:text="@string/convert"
-        android:onClick="energ"
-        android:id="@+id/button10"
-        android:layout_gravity="center_horizontal" />
 
 </LinearLayout>
 

@@ -2,9 +2,10 @@ package com.sun.suni.converter.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
@@ -16,7 +17,6 @@ public class Magnet extends AppCompatActivity implements AdapterView.OnItemSelec
 
     Spinner msp,msp1;
     EditText min,mou;
-    Button mbu;
     String mfrom,mto;
     MagnetConverter mcon;
 
@@ -26,7 +26,6 @@ public class Magnet extends AppCompatActivity implements AdapterView.OnItemSelec
         setContentView(R.layout.magnet);
         min = (EditText) findViewById(R.id.med);
         mou = (EditText) findViewById(R.id.med1);
-        mbu =(Button) findViewById(R.id.button11);
         mcon = new MagnetConverter();
 
         msp = (Spinner) findViewById(R.id.mspinner);
@@ -36,6 +35,36 @@ public class Magnet extends AppCompatActivity implements AdapterView.OnItemSelec
 
         assert getSupportActionBar() != null;
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        min.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                if (!min.getText().toString().equals(""))
+                {
+                    mfrom = (String) msp.getSelectedItem();
+                    mto = (String) msp1.getSelectedItem();
+                    Double mip = Double.valueOf(min.getText().toString());
+                    MagnetConverter.Magg fromMagg = MagnetConverter.Magg.fromString(mfrom);
+                    MagnetConverter.Magg toMagg = MagnetConverter.Magg.fromString(mto);
+                    Double mop = mcon.MagnetConvert(fromMagg,toMagg,mip);
+                    mou.setText(String.valueOf(mop));
+                }
+                else {
+                    mou.setText("");
+                }
+            }
+        });
     }
 
     @Override
@@ -47,20 +76,5 @@ public class Magnet extends AppCompatActivity implements AdapterView.OnItemSelec
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
-    public void magn(View view)
-    {
-        if (!min.getText().toString().equals(""))
-        {
-            mfrom = (String) msp.getSelectedItem();
-            mto = (String) msp1.getSelectedItem();
-            Double mip = Double.valueOf(min.getText().toString());
-            MagnetConverter.Magg fromMagg = MagnetConverter.Magg.fromString(mfrom);
-            MagnetConverter.Magg toMagg = MagnetConverter.Magg.fromString(mto);
-            Double mop = mcon.MagnetConvert(fromMagg,toMagg,mip);
-            mou.setText(String.valueOf(mop));
-        }
-        else {
-            mou.setText("");
-        }
-    }
+
 }

@@ -2,9 +2,10 @@ package com.sun.suni.converter.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
@@ -16,7 +17,6 @@ public class Energy extends AppCompatActivity implements AdapterView.OnItemSelec
 
     Spinner esp,esp1;
     EditText ea,eb;
-    Button ebu;
     String efrom,eto;
     EnergyConverter econ;
 
@@ -26,7 +26,6 @@ public class Energy extends AppCompatActivity implements AdapterView.OnItemSelec
         setContentView(R.layout.energy);
         ea = (EditText) findViewById(R.id.eed);
         eb = (EditText) findViewById(R.id.eed1);
-        ebu =(Button) findViewById(R.id.button10);
         econ = new EnergyConverter();
 
         esp = (Spinner) findViewById(R.id.espinner);
@@ -36,6 +35,36 @@ public class Energy extends AppCompatActivity implements AdapterView.OnItemSelec
 
         assert getSupportActionBar() != null;
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        ea.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                if (!ea.getText().toString().equals(""))
+                {
+                    efrom = (String) esp.getSelectedItem();
+                    eto = (String) esp1.getSelectedItem();
+                    Double eip = Double.valueOf(ea.getText().toString());
+                    EnergyConverter.Ene fromEne = EnergyConverter.Ene.fromString(efrom);
+                    EnergyConverter.Ene toEne = EnergyConverter.Ene.fromString(eto);
+                    Double eop = econ.EnergyConvert(fromEne,toEne,eip);
+                    eb.setText(String.valueOf(eop));
+                }
+                else {
+                    eb.setText("");
+                }
+            }
+        });
     }
 
     @Override
@@ -48,20 +77,4 @@ public class Energy extends AppCompatActivity implements AdapterView.OnItemSelec
 
     }
 
-    public void energ(View view)
-    {
-        if (!ea.getText().toString().equals(""))
-        {
-            efrom = (String) esp.getSelectedItem();
-            eto = (String) esp1.getSelectedItem();
-            Double eip = Double.valueOf(ea.getText().toString());
-            EnergyConverter.Ene fromEne = EnergyConverter.Ene.fromString(efrom);
-            EnergyConverter.Ene toEne = EnergyConverter.Ene.fromString(eto);
-            Double eop = econ.EnergyConvert(fromEne,toEne,eip);
-            eb.setText(String.valueOf(eop));
-        }
-        else {
-            eb.setText("");
-        }
-    }
 }
